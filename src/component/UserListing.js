@@ -80,4 +80,4 @@ function UserListing({ users, updateUser, deleteUser, currentUserRole }) {
   );
 }
 
-export default UserListing;
+export default React.memo(UserListing);

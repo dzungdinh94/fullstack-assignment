@@ -2,7 +2,7 @@ import React from "react";
 
 function UserRow({user, permissions, onEdit, onDelete}) {
   return (
-    <tr key={user.id}>
+    <tr>
       <td>
         <div
           className="rounded-circle d-flex align-items-center justify-content-center"

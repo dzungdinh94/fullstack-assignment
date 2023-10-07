@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import firebase from "./config/firebaseConfig";
+import { auth } from "./config/firebaseConfig";
 import { signInWithGoogle } from "./api/auth";
 import UserListing from "./component/UserListing";
-import { getAuth, signOut } from "firebase/auth";
 import useUserManagement from "./hooks/useUserManagement";
 import { useRoles } from "./context/RoleContext";
 import { getRandomUserData } from "./utils/generateData";
@@ -18,13 +17,11 @@ function App() {
   } = useUserManagement();
   const getPermissions = useRoles();
 
-  // const roles = ["Scrum Master", "Software Engineer", "Quality Assurance"];
-  // const randomIndex = Math.floor(Math.random() * roles.length);
   const permissions = getPermissions(currentUserRole);
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const unsubscribe = getAuth().onAuthStateChanged((user) => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
       console.log(user);
       setUser(user);
     });
@@ -43,7 +40,6 @@ function App() {
         isAuthenticated={user}
         userName={user?.email}
         onLogin={signInWithGoogle}
-        onLogout={signOut}
       />
       {user && (
         <div className="p-3">
