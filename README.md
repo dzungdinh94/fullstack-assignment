@@ -1,6 +1,7 @@
-# Getting Started with Create React App
-
+# Assigment app
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Role System
+You can change the Role in `useUserManagement` hook to see how the roles system work
 
 ## Available Scripts
 
